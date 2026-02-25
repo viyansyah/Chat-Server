@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
   "start": "sequelize db:migrate && node server.js"
-}
+},
   "engines": {
     "node": ">=18"
   },
