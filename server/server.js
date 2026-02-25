@@ -7,12 +7,15 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "*", 
+    methods: ["GET", "POST"],
   },
 });
 
 socketHandler(io);
 
-server.listen(3001, () => {
-  console.log("server running at http://localhost:3001");
+const PORT = process.env.PORT || 3001;
+
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
