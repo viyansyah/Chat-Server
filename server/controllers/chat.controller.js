@@ -15,7 +15,16 @@ async function join(io, socket, username) {
 
 async function sendMessage(io, socket, msg) {
   try {
-    const result = await chatService.handleChatMessage(socket.data.userId, msg);
+    // 🔐 Guard supaya tidak pernah null
+    if (!socket.data.userId) {
+      console.log("Blocked message: user not joined yet");
+      return;
+    }
+
+    const result = await chatService.handleChatMessage(
+      socket.data.userId,
+      msg
+    );
 
     io.emit("chat message", result.userMessage);
 
