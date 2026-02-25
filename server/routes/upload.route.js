@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('../middleware/multer');
-const uploadcare = require('../helpers/uploadcare');
+const uploadcare = require('../helpers/uploadCare');
 
 router.post('/', multer.single('file'), async (req, res) => {
     try {
